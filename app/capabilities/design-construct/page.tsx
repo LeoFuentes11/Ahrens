@@ -3,7 +3,7 @@ import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
 import { m } from 'framer-motion';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
-import { ClipboardList, PenTool, HardHat, Wrench, CheckCircle2, Key } from 'lucide-react';
+import { ClipboardList, PenTool, HardHat, Building2, CheckCircle2, Key } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Design & Construct',
@@ -25,13 +25,9 @@ const PROCESS = [
   { icon: ClipboardList, step: '01', title: 'Discovery', description: 'Understanding your brief, constraints, and aspirations in detail.' },
   { icon: PenTool, step: '02', title: 'Design', description: 'Our in-house design team develops concepts, plans, and specifications.' },
   { icon: HardHat, step: '03', title: 'Approval', description: 'We manage all planning, permitting, and regulatory approvals.' },
-  { icon: Factory, step: '04', title: 'Construction', description: 'Ahrens self-performs key trades for speed, quality, and programme control.' },
+  { icon: Building2, step: '04', title: 'Construction', description: 'Ahrens self-performs key trades for speed, quality, and programme control.' },
   { icon: Key, step: '05', title: 'Handover', description: 'Comprehensive commissioning, training, and defects liability management.' },
 ];
-
-function Factory(props: React.ComponentProps<typeof ClipboardList>) {
-  return <HardHat {...props} />;
-}
 
 export default function DesignConstructPage() {
   return (
