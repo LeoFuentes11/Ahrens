@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-brand-orange: #F26522;
+  --color-brand-dark: #1C2531;
+  --color-brand-charcoal: #2D3748;
+  --color-brand-steel: #4A5568;
+  --color-brand-smoke: #718096;
+  --color-brand-mist: #A0AEC0;
+  --color-brand-cream: #FAF8F5;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-brand-dark font-body;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold leading-tight;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-brand-orange);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999];
+    @apply bg-brand-orange text-white px-4 py-2 rounded font-semibold text-sm;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-brand-orange text-white font-semibold px-6 py-3 rounded-sm;
+    @apply hover:bg-orange-600 transition-colors duration-200 cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 border-2 border-brand-orange text-brand-orange font-semibold px-6 py-3 rounded-sm;
+    @apply hover:bg-brand-orange hover:text-white transition-colors duration-200 cursor-pointer;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 text-brand-dark font-semibold px-6 py-3 rounded-sm;
+    @apply hover:text-brand-orange transition-colors duration-200 cursor-pointer;
+  }
+
+  .section-heading {
+    @apply text-3xl md:text-4xl font-heading font-bold text-brand-dark;
+  }
+
+  .section-subheading {
+    @apply text-lg text-brand-steel mt-3 max-w-2xl;
+  }
+
+  .card {
+    @apply bg-white rounded-sm shadow-card hover:shadow-card-hover transition-shadow duration-300 overflow-hidden;
+  }
+
+  .container-xl {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-8xl {
+    @apply max-w-8xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
