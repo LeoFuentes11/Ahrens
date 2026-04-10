@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
 import StaggerContainer from '@/components/motion/StaggerContainer';
@@ -18,6 +19,7 @@ const PROJECTS = [
     location: 'Prominent Hill, SA',
     description: 'Full design and construction of a 600-person accommodation village for OZ Minerals, including dining, recreation, medical, and facilities management.',
     year: '2023',
+    image: '/images/project-mine-village.svg',
   },
   {
     title: 'Murray Bridge Regional Aquatic Centre',
@@ -26,6 +28,7 @@ const PROJECTS = [
     location: 'Murray Bridge, SA',
     description: 'State-of-the-art regional aquatic facility featuring 50m pool, learn-to-swim pools, and full amenities delivered for the Rural City of Murray Bridge.',
     year: '2022',
+    image: '/images/project-aquatic-centre.svg',
   },
   {
     title: 'Bungama Grain Storage Expansion',
@@ -34,6 +37,7 @@ const PROJECTS = [
     location: 'Bungama, SA',
     description: 'Major grain storage expansion adding 150,000 tonnes of capacity for a regional grain handler, including receival, conveying, and aeration systems.',
     year: '2023',
+    image: '/images/project-grain-storage.svg',
   },
   {
     title: 'Wheatbelt Logistics Hub',
@@ -42,6 +46,7 @@ const PROJECTS = [
     location: 'Merredin, WA',
     description: 'Large-span steel warehouse complex for a national logistics operator, including mezzanine floors, dock levellers, and full site services.',
     year: '2022',
+    image: '/images/project-logistics-hub.svg',
   },
   {
     title: 'South East Water Treatment Facility',
@@ -50,6 +55,7 @@ const PROJECTS = [
     location: 'Mount Gambier, SA',
     description: 'Water treatment and storage infrastructure upgrade for SA Water, including new tanks, pipework, and control systems.',
     year: '2021',
+    image: '/images/project-water-treatment.svg',
   },
   {
     title: 'Port Augusta Solar Farm O&M Facility',
@@ -58,6 +64,7 @@ const PROJECTS = [
     location: 'Port Augusta, SA',
     description: 'Operations and maintenance facility for a 315MW solar farm, including workshop, warehouse, offices, and battery storage infrastructure.',
     year: '2021',
+    image: '/images/project-solar-facility.svg',
   },
 ];
 
@@ -83,9 +90,16 @@ export default function ProjectsPage() {
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PROJECTS.map((project) => (
               <FadeInItem as="article" key={project.title} className="card flex flex-col overflow-hidden">
-                {/* Image placeholder */}
-                <div className="bg-brand-dark/10 h-48 relative flex items-end p-4">
-                  <div className="flex items-center gap-2">
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/60 to-transparent" />
+                  <div className="absolute bottom-0 left-0 p-4 flex items-center gap-2">
                     <span className="text-xs font-semibold bg-brand-orange text-white px-2 py-1 rounded-sm uppercase tracking-wide">
                       {project.category}
                     </span>

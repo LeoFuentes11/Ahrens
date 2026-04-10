@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="480" viewBox="0 0 800 480">
+  <rect width="800" height="480" fill="#1a2010"/>
+  <rect x="0" y="360" width="800" height="120" fill="#101508"/>
+  <!-- Solar panels grid -->
+  <g opacity="0.8">
+    <rect x="40" y="220" width="80" height="50" rx="2" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+    <rect x="130" y="210" width="80" height="50" rx="2" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+    <rect x="220" y="200" width="80" height="50" rx="2" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+    <rect x="310" y="210" width="80" height="50" rx="2" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+    <rect x="400" y="220" width="80" height="50" rx="2" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+    <rect x="490" y="210" width="80" height="50" rx="2" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+    <rect x="580" y="200" width="80" height="50" rx="2" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+    <rect x="670" y="210" width="90" height="50" rx="2" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+    <rect x="40" y="290" width="80" height="50" rx="2" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+    <rect x="130" y="280" width="80" height="50" rx="2" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+    <rect x="220" y="270" width="80" height="50" rx="2" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+    <rect x="310" y="280" width="80" height="50" rx="2" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+    <rect x="400" y="290" width="80" height="50" rx="2" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+    <rect x="490" y="280" width="80" height="50" rx="2" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+    <rect x="580" y="270" width="80" height="50" rx="2" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+    <rect x="670" y="280" width="90" height="50" rx="2" fill="#1a3a5a" stroke="#2a5a8a" stroke-width="1"/>
+  </g>
+  <!-- O&M building -->
+  <rect x="280" y="340" width="240" height="140" fill="#2a2a1a"/>
+  <rect x="280" y="340" width="240" height="8" fill="#F26522" opacity="0.6"/>
+  <rect x="0" y="360" width="800" height="6" fill="#F26522" opacity="0.4"/>
+  <text x="400" y="120" font-family="Arial, sans-serif" font-size="16" fill="#F26522" opacity="0.7" text-anchor="middle" letter-spacing="4">DESIGN &amp; CONSTRUCT</text>
+  <text x="400" y="155" font-family="Arial, sans-serif" font-size="18" fill="white" opacity="0.5" text-anchor="middle">Port Augusta Solar Farm O&amp;M Facility</text>
+  <text x="400" y="455" font-family="Arial, sans-serif" font-size="13" fill="white" opacity="0.3" text-anchor="middle">project-solar-facility.jpg · 800 × 480</text>
+</svg>

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { m } from 'framer-motion';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
@@ -11,6 +12,17 @@ export default function HeroHome() {
       className="relative min-h-dvh flex items-center bg-brand-dark overflow-hidden"
       aria-labelledby="hero-heading"
     >
+      {/* Background image */}
+      <Image
+        src="/images/hero-bg.svg"
+        alt=""
+        fill
+        className="object-cover opacity-40"
+        priority
+        aria-hidden="true"
+      />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-brand-dark/60" aria-hidden="true" />
       {/* Background pattern */}
       <div
         className="absolute inset-0 opacity-5"

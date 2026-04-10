@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, HardHat, Mountain, Factory, Droplets, Warehouse, Cylinder, Wrench } from 'lucide-react';
 import HeroHome from '@/components/HeroHome';
 import StatsTicker from '@/components/StatsTicker';
@@ -208,26 +209,37 @@ export default function HomePage() {
                 category: 'Mining Services',
                 value: '$45M',
                 location: 'South Australia',
+                image: '/images/project-mine-village.svg',
               },
               {
                 title: 'Murray Bridge Regional Aquatic Centre',
                 category: 'Design & Construct',
                 value: '$28M',
                 location: 'South Australia',
+                image: '/images/project-aquatic-centre.svg',
               },
               {
                 title: 'Bungama Grain Storage Expansion',
                 category: 'Silos',
                 value: '$12M',
                 location: 'South Australia',
+                image: '/images/project-grain-storage.svg',
               },
             ].map((project) => (
               <FadeInItem
                 key={project.title}
                 className="card group overflow-hidden"
               >
-                <div className="bg-brand-dark/10 h-48 flex items-end p-5 relative">
-                  <span className="text-xs font-semibold bg-brand-orange text-white px-2 py-1 rounded-sm uppercase tracking-wide">
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/50 to-transparent" />
+                  <span className="absolute bottom-4 left-4 text-xs font-semibold bg-brand-orange text-white px-2 py-1 rounded-sm uppercase tracking-wide">
                     {project.category}
                   </span>
                 </div>
