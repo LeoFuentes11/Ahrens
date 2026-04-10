@@ -1,5 +1,3 @@
-'use client';
-
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, HardHat, Mountain, Factory, Droplets, Warehouse, Cylinder, Wrench } from 'lucide-react';
@@ -7,8 +5,8 @@ import HeroHome from '@/components/HeroHome';
 import StatsTicker from '@/components/StatsTicker';
 import AnimatedSection from '@/components/AnimatedSection';
 import NewsletterForm from '@/components/NewsletterForm';
-import { staggerContainer, fadeInUp, scaleIn } from '@/lib/animations';
-import { m } from 'framer-motion';
+import StaggerContainer from '@/components/motion/StaggerContainer';
+import FadeInItem from '@/components/motion/FadeInItem';
 
 export const metadata: Metadata = {
   title: 'Ahrens — Built to Last',
@@ -87,15 +85,9 @@ export default function HomePage() {
             </p>
           </AnimatedSection>
 
-          <m.div
-            className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-          >
+          <StaggerContainer className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {CAPABILITIES.map((cap) => (
-              <m.div key={cap.href} variants={scaleIn}>
+              <FadeInItem key={cap.href} variant="scaleIn">
                 <Link
                   href={cap.href}
                   className="card group flex flex-col p-6 h-full hover:-translate-y-1 transition-transform duration-200"
@@ -118,9 +110,9 @@ export default function HomePage() {
                     />
                   </div>
                 </Link>
-              </m.div>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -147,17 +139,10 @@ export default function HomePage() {
               </Link>
             </AnimatedSection>
 
-            <m.div
-              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-60px' }}
-            >
+            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {VALUES.map((val) => (
-                <m.div
+                <FadeInItem
                   key={val.title}
-                  variants={fadeInUp}
                   className="p-6 border border-gray-100 rounded-sm hover:border-brand-orange/30 hover:shadow-card-hover transition-all duration-300"
                 >
                   <h3 className="font-heading font-semibold text-brand-dark mb-2">
@@ -166,9 +151,9 @@ export default function HomePage() {
                   <p className="text-sm text-brand-steel leading-relaxed">
                     {val.description}
                   </p>
-                </m.div>
+                </FadeInItem>
               ))}
-            </m.div>
+            </StaggerContainer>
           </div>
         </div>
       </section>
@@ -216,13 +201,7 @@ export default function HomePage() {
             </div>
           </AnimatedSection>
 
-          <m.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-          >
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
                 title: 'Prominent Hill Mine Village',
@@ -243,9 +222,8 @@ export default function HomePage() {
                 location: 'South Australia',
               },
             ].map((project) => (
-              <m.div
+              <FadeInItem
                 key={project.title}
-                variants={fadeInUp}
                 className="card group overflow-hidden"
               >
                 <div className="bg-brand-dark/10 h-48 flex items-end p-5 relative">
@@ -262,9 +240,9 @@ export default function HomePage() {
                     <span className="text-sm font-semibold text-brand-orange">{project.value}</span>
                   </div>
                 </div>
-              </m.div>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
         </div>
       </section>
 
