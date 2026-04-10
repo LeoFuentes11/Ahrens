@@ -1,12 +1,10 @@
-'use client';
-
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, TrendingUp, Heart, Users, MapPin } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
-import { m } from 'framer-motion';
-import { staggerContainer, fadeInUp } from '@/lib/animations';
+import StaggerContainer from '@/components/motion/StaggerContainer';
+import FadeInItem from '@/components/motion/FadeInItem';
 
 export const metadata: Metadata = {
   title: 'Careers',
@@ -58,17 +56,10 @@ export default function CareersPage() {
             </p>
           </AnimatedSection>
 
-          <m.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" margin="0px">
             {REASONS.map((reason) => (
-              <m.div
+              <FadeInItem
                 key={reason.title}
-                variants={fadeInUp}
                 className="text-center p-6"
               >
                 <reason.icon
@@ -81,9 +72,9 @@ export default function CareersPage() {
                 <p className="text-sm text-brand-steel leading-relaxed">
                   {reason.description}
                 </p>
-              </m.div>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
         </div>
       </section>
 

@@ -1,10 +1,8 @@
-'use client';
-
 import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
-import { m } from 'framer-motion';
-import { staggerContainer, fadeInUp } from '@/lib/animations';
+import StaggerContainer from '@/components/motion/StaggerContainer';
+import FadeInItem from '@/components/motion/FadeInItem';
 import { Building2, Wrench, MapPin, TrendingUp, Users, Layers } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -60,25 +58,19 @@ export default function StrengthPage() {
       {/* Stats Row */}
       <section className="py-10 bg-brand-orange" aria-label="Strength statistics">
         <div className="container-xl">
-          <m.div
-            className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-white text-center"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-white text-center" margin="0px">
             {[
               { value: '$2B+', label: 'Projects Delivered' },
               { value: '90+', label: 'Years in Business' },
               { value: 'Debt-Free', label: 'Financial Position' },
               { value: 'All States', label: 'National Coverage' },
             ].map((stat) => (
-              <m.div key={stat.label} variants={fadeInUp}>
+              <FadeInItem key={stat.label}>
                 <div className="text-3xl font-heading font-bold">{stat.value}</div>
                 <div className="mt-1 text-white/80 text-sm">{stat.label}</div>
-              </m.div>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -94,17 +86,10 @@ export default function StrengthPage() {
             </p>
           </AnimatedSection>
 
-          <m.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-          >
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {STRENGTHS.map((strength) => (
-              <m.div
+              <FadeInItem
                 key={strength.title}
-                variants={fadeInUp}
                 className="p-6 border border-gray-100 rounded-sm hover:border-brand-orange/30 hover:shadow-card-hover transition-all"
               >
                 <strength.icon
@@ -117,9 +102,9 @@ export default function StrengthPage() {
                 <p className="text-brand-steel text-sm leading-relaxed">
                   {strength.description}
                 </p>
-              </m.div>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
         </div>
       </section>
     </>

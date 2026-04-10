@@ -1,10 +1,8 @@
-'use client';
-
 import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
-import { m } from 'framer-motion';
-import { staggerContainer, fadeInUp } from '@/lib/animations';
+import StaggerContainer from '@/components/motion/StaggerContainer';
+import FadeInItem from '@/components/motion/FadeInItem';
 import { MapPin, Clock, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
@@ -88,17 +86,10 @@ export default function OpportunitiesPage() {
             </p>
           </AnimatedSection>
 
-          <m.div
-            className="space-y-4"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <StaggerContainer className="space-y-4" margin="0px">
             {ROLES.map((role) => (
-              <m.div
+              <FadeInItem
                 key={role.title}
-                variants={fadeInUp}
                 className="bg-white rounded-sm shadow-card hover:shadow-card-hover transition-shadow p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
               >
                 <div className="flex-1">
@@ -131,9 +122,9 @@ export default function OpportunitiesPage() {
                   Apply Now
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Link>
-              </m.div>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
 
           <AnimatedSection className="mt-12 p-8 bg-brand-dark rounded-sm text-white text-center">
             <h3 className="font-heading font-bold text-xl mb-2">

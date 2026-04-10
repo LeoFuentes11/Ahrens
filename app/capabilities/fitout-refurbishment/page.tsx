@@ -1,10 +1,8 @@
-'use client';
-
 import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
-import { m } from 'framer-motion';
-import { staggerContainer, fadeInUp } from '@/lib/animations';
+import StaggerContainer from '@/components/motion/StaggerContainer';
+import FadeInItem from '@/components/motion/FadeInItem';
 import { CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -60,28 +58,17 @@ export default function FitoutRefurbishmentPage() {
               <h3 className="font-heading font-semibold text-brand-dark text-xl mb-5">
                 Sectors We Serve
               </h3>
-              <m.ul
-                className="grid grid-cols-1 sm:grid-cols-2 gap-3"
-                role="list"
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
+              <StaggerContainer as="ul" className="grid grid-cols-1 sm:grid-cols-2 gap-3" margin="0px">
                 {SECTORS.map((sector) => (
-                  <m.li
-                    key={sector}
-                    variants={fadeInUp}
-                    className="flex items-start gap-2 text-sm text-brand-steel"
-                  >
+                  <FadeInItem as="li" key={sector} className="flex items-start gap-2 text-sm text-brand-steel">
                     <CheckCircle2
                       className="w-4 h-4 text-brand-orange shrink-0 mt-0.5"
                       aria-hidden="true"
                     />
                     {sector}
-                  </m.li>
+                  </FadeInItem>
                 ))}
-              </m.ul>
+              </StaggerContainer>
             </AnimatedSection>
           </div>
         </div>

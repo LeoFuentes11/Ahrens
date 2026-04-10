@@ -1,10 +1,8 @@
-'use client';
-
 import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
-import { m } from 'framer-motion';
-import { staggerContainer, fadeInUp } from '@/lib/animations';
+import StaggerContainer from '@/components/motion/StaggerContainer';
+import FadeInItem from '@/components/motion/FadeInItem';
 import { Quote } from 'lucide-react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
@@ -72,17 +70,10 @@ export default function StoriesPage() {
             </p>
           </AnimatedSection>
 
-          <m.div
-            className="space-y-8"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <StaggerContainer className="space-y-8" margin="0px">
             {STORIES.map((story, index) => (
-              <m.div
+              <FadeInItem
                 key={story.name}
-                variants={fadeInUp}
                 className={`grid lg:grid-cols-3 gap-8 p-8 rounded-sm ${
                   index % 2 === 0 ? 'bg-brand-cream' : 'bg-white border border-gray-100 shadow-card'
                 }`}
@@ -117,9 +108,9 @@ export default function StoriesPage() {
                     </p>
                   </div>
                 </div>
-              </m.div>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
         </div>
       </section>
 

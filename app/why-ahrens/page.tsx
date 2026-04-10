@@ -1,12 +1,10 @@
-'use client';
-
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Clock, Users, Shield, ShieldCheck, Heart } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
-import { m } from 'framer-motion';
-import { staggerContainer, fadeInUp } from '@/lib/animations';
+import StaggerContainer from '@/components/motion/StaggerContainer';
+import FadeInItem from '@/components/motion/FadeInItem';
 
 export const metadata: Metadata = {
   title: 'Why Ahrens',
@@ -38,7 +36,7 @@ const PILLARS = [
   {
     icon: ShieldCheck,
     title: 'Safety',
-    description: 'Zero Harm is not a target — it&apos;s our culture. Safety underpins every decision we make.',
+    description: 'Zero Harm is not a target — it\'s our culture. Safety underpins every decision we make.',
     href: '/why-ahrens/safety',
     cta: 'Safety Culture',
   },
@@ -71,15 +69,9 @@ export default function WhyAhrensPage() {
             </p>
           </AnimatedSection>
 
-          <m.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-          >
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PILLARS.map((pillar) => (
-              <m.div key={pillar.href} variants={fadeInUp}>
+              <FadeInItem key={pillar.href}>
                 <Link
                   href={pillar.href}
                   className="card group flex flex-col p-8 h-full hover:-translate-y-1 transition-transform duration-200"
@@ -102,9 +94,9 @@ export default function WhyAhrensPage() {
                     />
                   </div>
                 </Link>
-              </m.div>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
         </div>
       </section>
     </>

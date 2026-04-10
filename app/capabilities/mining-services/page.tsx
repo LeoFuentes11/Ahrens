@@ -1,10 +1,8 @@
-'use client';
-
 import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
-import { m } from 'framer-motion';
-import { staggerContainer, fadeInUp } from '@/lib/animations';
+import StaggerContainer from '@/components/motion/StaggerContainer';
+import FadeInItem from '@/components/motion/FadeInItem';
 import { Tent, Wrench, Building2, Truck, Zap, Droplets } from 'lucide-react';
 import Link from 'next/link';
 
@@ -72,17 +70,10 @@ export default function MiningServicesPage() {
             </p>
           </AnimatedSection>
 
-          <m.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-          >
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {SERVICES.map((service) => (
-              <m.div
+              <FadeInItem
                 key={service.title}
-                variants={fadeInUp}
                 className="border-l-4 border-brand-orange pl-5 py-4"
               >
                 <service.icon
@@ -95,9 +86,9 @@ export default function MiningServicesPage() {
                 <p className="text-brand-steel text-sm leading-relaxed">
                   {service.description}
                 </p>
-              </m.div>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
 
           <AnimatedSection className="mt-16 text-center">
             <Link href="/contact" className="btn-primary inline-flex">

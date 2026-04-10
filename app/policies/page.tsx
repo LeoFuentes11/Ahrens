@@ -1,10 +1,8 @@
-'use client';
-
 import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
-import { m } from 'framer-motion';
-import { staggerContainer, fadeInUp } from '@/lib/animations';
+import StaggerContainer from '@/components/motion/StaggerContainer';
+import FadeInItem from '@/components/motion/FadeInItem';
 import { FileText, Download } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -79,17 +77,10 @@ export default function PoliciesPage() {
             </p>
           </AnimatedSection>
 
-          <m.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" margin="0px">
             {POLICIES.map((policy) => (
-              <m.div
+              <FadeInItem
                 key={policy.title}
-                variants={fadeInUp}
                 className="card p-6 flex flex-col"
               >
                 <div className="flex items-start justify-between mb-4">
@@ -120,9 +111,9 @@ export default function PoliciesPage() {
                   <Download className="w-4 h-4" aria-hidden="true" />
                   Download PDF
                 </button>
-              </m.div>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
 
           <AnimatedSection className="mt-16 p-8 bg-brand-dark rounded-sm text-white text-center">
             <h3 className="font-heading font-bold text-xl mb-2">

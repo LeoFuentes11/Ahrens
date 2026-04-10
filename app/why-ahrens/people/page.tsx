@@ -1,10 +1,8 @@
-'use client';
-
 import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
-import { m } from 'framer-motion';
-import { staggerContainer, fadeInUp } from '@/lib/animations';
+import StaggerContainer from '@/components/motion/StaggerContainer';
+import FadeInItem from '@/components/motion/FadeInItem';
 import { GraduationCap, TrendingUp, Heart, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -57,20 +55,14 @@ export default function PeoplePage() {
       {/* Stats */}
       <section className="py-16 bg-brand-orange" aria-label="People statistics">
         <div className="container-xl">
-          <m.div
-            className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-white text-center"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-white text-center" margin="0px">
             {STATS.map((stat) => (
-              <m.div key={stat.label} variants={fadeInUp}>
+              <FadeInItem key={stat.label}>
                 <div className="text-4xl font-heading font-bold">{stat.value}</div>
                 <div className="mt-1 text-white/80 text-sm">{stat.label}</div>
-              </m.div>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -86,17 +78,10 @@ export default function PeoplePage() {
             </p>
           </AnimatedSection>
 
-          <m.div
-            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-          >
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {PROGRAMS.map((program) => (
-              <m.div
+              <FadeInItem
                 key={program.title}
-                variants={fadeInUp}
                 className="flex gap-5 p-6 border border-gray-100 rounded-sm hover:border-brand-orange/30 transition-colors"
               >
                 <program.icon
@@ -111,9 +96,9 @@ export default function PeoplePage() {
                     {program.description}
                   </p>
                 </div>
-              </m.div>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
         </div>
       </section>
     </>

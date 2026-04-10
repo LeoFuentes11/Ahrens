@@ -1,11 +1,9 @@
-'use client';
-
 import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
-import { m } from 'framer-motion';
-import { staggerContainer, fadeInUp } from '@/lib/animations';
-import { Droplets, Wheat, Mountain, Building2 } from 'lucide-react';
+import StaggerContainer from '@/components/motion/StaggerContainer';
+import FadeInItem from '@/components/motion/FadeInItem';
+import { Wheat, Mountain, Building2 } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Water Storage',
@@ -56,17 +54,10 @@ export default function WaterStoragePage() {
             </p>
           </AnimatedSection>
 
-          <m.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" margin="0px">
             {CATEGORIES.map((cat) => (
-              <m.div
+              <FadeInItem
                 key={cat.title}
-                variants={fadeInUp}
                 className="card p-7 text-center"
               >
                 <cat.icon
@@ -79,9 +70,9 @@ export default function WaterStoragePage() {
                 <p className="text-brand-steel text-sm leading-relaxed">
                   {cat.description}
                 </p>
-              </m.div>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
         </div>
       </section>
     </>

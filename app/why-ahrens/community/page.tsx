@@ -1,10 +1,8 @@
-'use client';
-
 import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
-import { m } from 'framer-motion';
-import { staggerContainer, fadeInUp } from '@/lib/animations';
+import StaggerContainer from '@/components/motion/StaggerContainer';
+import FadeInItem from '@/components/motion/FadeInItem';
 import { Star, Stethoscope, Mountain, Leaf, Brain, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -68,17 +66,10 @@ export default function CommunityPage() {
             </p>
           </AnimatedSection>
 
-          <m.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-          >
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {PILLARS.map((pillar) => (
-              <m.div
+              <FadeInItem
                 key={pillar.title}
-                variants={fadeInUp}
                 className="bg-white p-7 rounded-sm shadow-card hover:shadow-card-hover transition-shadow"
               >
                 <pillar.icon
@@ -91,9 +82,9 @@ export default function CommunityPage() {
                 <p className="text-brand-steel text-sm leading-relaxed">
                   {pillar.description}
                 </p>
-              </m.div>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
         </div>
       </section>
     </>

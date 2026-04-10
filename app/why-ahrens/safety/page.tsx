@@ -1,10 +1,8 @@
-'use client';
-
 import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
-import { m } from 'framer-motion';
-import { staggerContainer, fadeInUp } from '@/lib/animations';
+import StaggerContainer from '@/components/motion/StaggerContainer';
+import FadeInItem from '@/components/motion/FadeInItem';
 import { ShieldCheck, Award, ClipboardCheck, AlertTriangle } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -69,17 +67,10 @@ export default function SafetyPage() {
             </p>
           </AnimatedSection>
 
-          <m.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" margin="0px">
             {CERTS.map((cert) => (
-              <m.div
+              <FadeInItem
                 key={cert.title}
-                variants={fadeInUp}
                 className="card p-6 text-center"
               >
                 <cert.icon className="w-10 h-10 text-brand-orange mx-auto mb-3" aria-hidden="true" />
@@ -87,9 +78,9 @@ export default function SafetyPage() {
                   {cert.title}
                 </h3>
                 <p className="mt-2 text-sm text-brand-steel">{cert.description}</p>
-              </m.div>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -101,18 +92,11 @@ export default function SafetyPage() {
               Our Safety Commitments
             </h2>
           </AnimatedSection>
-          <m.ul
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-            role="list"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <StaggerContainer as="ul" className="grid grid-cols-1 sm:grid-cols-2 gap-4" margin="0px">
             {COMMITMENTS.map((commitment) => (
-              <m.li
+              <FadeInItem
+                as="li"
                 key={commitment}
-                variants={fadeInUp}
                 className="flex items-start gap-3 p-4 bg-white rounded-sm border border-gray-100"
               >
                 <ClipboardCheck
@@ -120,9 +104,9 @@ export default function SafetyPage() {
                   aria-hidden="true"
                 />
                 <span className="text-sm text-brand-steel">{commitment}</span>
-              </m.li>
+              </FadeInItem>
             ))}
-          </m.ul>
+          </StaggerContainer>
         </div>
       </section>
 

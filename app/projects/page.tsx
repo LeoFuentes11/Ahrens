@@ -1,10 +1,8 @@
-'use client';
-
 import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
-import { m } from 'framer-motion';
-import { staggerContainer, fadeInUp } from '@/lib/animations';
+import StaggerContainer from '@/components/motion/StaggerContainer';
+import FadeInItem from '@/components/motion/FadeInItem';
 import { MapPin } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -82,19 +80,9 @@ export default function ProjectsPage() {
             </p>
           </AnimatedSection>
 
-          <m.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-          >
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PROJECTS.map((project) => (
-              <m.article
-                key={project.title}
-                variants={fadeInUp}
-                className="card flex flex-col overflow-hidden"
-              >
+              <FadeInItem as="article" key={project.title} className="card flex flex-col overflow-hidden">
                 {/* Image placeholder */}
                 <div className="bg-brand-dark/10 h-48 relative flex items-end p-4">
                   <div className="flex items-center gap-2">
@@ -125,9 +113,9 @@ export default function ProjectsPage() {
                     </span>
                   </div>
                 </div>
-              </m.article>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
         </div>
       </section>
     </>

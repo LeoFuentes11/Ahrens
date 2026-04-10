@@ -1,10 +1,8 @@
-'use client';
-
 import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
-import { m } from 'framer-motion';
-import { staggerContainer, fadeInUp } from '@/lib/animations';
+import StaggerContainer from '@/components/motion/StaggerContainer';
+import FadeInItem from '@/components/motion/FadeInItem';
 import { ClipboardList, PenTool, HardHat, Building2, CheckCircle2, Key } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -89,17 +87,10 @@ export default function DesignConstructPage() {
               Our Delivery Process
             </h2>
           </AnimatedSection>
-          <m.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6" margin="0px">
             {PROCESS.map((step) => (
-              <m.div
+              <FadeInItem
                 key={step.step}
-                variants={fadeInUp}
                 className="bg-white p-6 rounded-sm shadow-card text-center"
               >
                 <div className="text-4xl font-heading font-bold text-brand-orange/20 mb-2">
@@ -115,9 +106,9 @@ export default function DesignConstructPage() {
                 <p className="text-xs text-brand-steel leading-relaxed">
                   {step.description}
                 </p>
-              </m.div>
+              </FadeInItem>
             ))}
-          </m.div>
+          </StaggerContainer>
         </div>
       </section>
     </>
