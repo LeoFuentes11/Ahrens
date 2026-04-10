@@ -1,3 +1,5 @@
+'use client';
+
 import { m } from 'framer-motion';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';

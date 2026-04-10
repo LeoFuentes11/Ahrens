@@ -1,3 +1,5 @@
+'use client';
+
 import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';

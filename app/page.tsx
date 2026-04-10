@@ -1,3 +1,5 @@
+'use client';
+
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, HardHat, Mountain, Factory, Droplets, Warehouse, Cylinder, Wrench } from 'lucide-react';

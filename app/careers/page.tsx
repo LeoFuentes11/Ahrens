@@ -1,3 +1,5 @@
+'use client';
+
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, TrendingUp, Heart, Users, MapPin } from 'lucide-react';
