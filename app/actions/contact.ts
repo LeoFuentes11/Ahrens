@@ -6,9 +6,12 @@ const ContactSchema = z.object({
   firstName: z.string().min(1, 'First name is required').max(100),
   lastName: z.string().min(1, 'Last name is required').max(100),
   email: z.string().email('Please enter a valid email address'),
-  phone: z.string().optional(),
+  phone: z.string().max(20).regex(/^[\d\s+\-()*#]*$/, 'Invalid phone number format').optional().or(z.literal('')),
   company: z.string().optional(),
-  enquiryType: z.string().min(1, 'Please select an enquiry type'),
+  enquiryType: z.enum(
+    ['general', 'design-construct', 'mining', 'steel', 'water', 'sheds', 'silos', 'careers'],
+    { errorMap: () => ({ message: 'Please select a valid enquiry type' }) }
+  ),
   message: z.string().min(10, 'Message must be at least 10 characters').max(5000),
 });
 
